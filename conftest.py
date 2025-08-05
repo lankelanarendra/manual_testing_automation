@@ -1,5 +1,10 @@
-# utils/config.py
-BASE_URL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
-VALID_USERNAME = "Admin"
-VALID_PASSWORD = "admin123"
+# conftest.py
+import pytest
+from selenium import webdriver
 
+@pytest.fixture
+def driver():
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    yield driver
+    driver.quit()
